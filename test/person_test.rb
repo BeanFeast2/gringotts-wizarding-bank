@@ -12,7 +12,6 @@ class PersonTest < Minitest::Test
   end
 
   def test_it_has_name_and_galleons
-    skip
     person = Person.new("Minerva", 100)
 
     assert_equal "Minerva", person.name
@@ -20,7 +19,6 @@ class PersonTest < Minitest::Test
   end
 
   def test_it_can_have_different_name_and_galleon_amount
-    skip
     person = Person.new("Bellatrix", 144)
 
     assert_equal "Bellatrix", person.name

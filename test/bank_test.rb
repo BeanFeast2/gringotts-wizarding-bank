@@ -3,6 +3,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/bank'
 require './lib/person'
+require 'pry'
 
 class BankTest < Minitest::Test
 
@@ -13,21 +14,18 @@ class BankTest < Minitest::Test
   end
 
   def test_it_has_name
-    skip
     chase = Bank.new('JP Morgan Chase')
 
     assert_equal 'JP Morgan Chase', chase.name
   end
 
   def test_it_can_have_different_name
-    skip
     wells_fargo = Bank.new('Wells Fargo')
 
     assert_equal 'Wells Fargo', wells_fargo.name
   end
 
   def test_it_can_open_account_with_person
-    skip
     person = Person.new("Bellatrix", 144)
     wells_fargo = Bank.new('Wells Fargo')
     wells_fargo.open_account(person)
@@ -36,16 +34,14 @@ class BankTest < Minitest::Test
   end
 
   def test_it_opens_account_with_no_money
-    skip
     person = Person.new("Bellatrix", 144)
     wells_fargo = Bank.new('Wells Fargo')
     wells_fargo.open_account(person)
 
-    assert_equal 0, wells_fargo.account_balance(person)
+    assert_equal 0, wells_fargo.account_total(person)
   end
 
   def test_it_can_deposit_money
-    skip
     person = Person.new("Bellatrix", 100)
     wells_fargo = Bank.new('Wells Fargo')
     wells_fargo.open_account(person)
@@ -55,8 +51,7 @@ class BankTest < Minitest::Test
     assert_equal 0, person.galleons
   end
 
-  def test_it_can_have_multiple accounts
-    skip
+  def test_it_can_have_multiple_accounts
     person1 = Person.new("Bellatrix", 100)
     person2 = Person.new("Minerva", 130)
     wells_fargo = Bank.new('Wells Fargo')
@@ -70,7 +65,6 @@ class BankTest < Minitest::Test
   end
 
   def test_it_cant_deposit_more_than_person_has
-    skip
     person = Person.new('Bellatrix', 50)
     wells_fargo = Bank.new('Wells Fargo')
     wells_fargo.open_account(person)
@@ -159,6 +153,6 @@ class BankTest < Minitest::Test
     chase.deposit(person1, 200)
     chase.deposit(person2, 130)
 
-    assert_equal 330, chase.total_galleons
+    assert_equal 330, chase.total_galleons_in_bank
   end
 end
