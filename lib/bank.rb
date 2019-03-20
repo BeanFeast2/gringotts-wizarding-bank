@@ -58,7 +58,7 @@ class Bank
           if !new_account.account_name(person).empty?
             new_account.deposit(person, amount)
           else
-            return "Bellatrix does not have an account with JP Morgan Chase"
+            return "#{account[:account_holder]} does not have an account with #{new_account.name}"
           end
         end
       end
